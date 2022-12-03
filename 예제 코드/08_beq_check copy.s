@@ -1,7 +1,6 @@
 .text
 .global main
-main : and $3 $2 $1
-       beq $3 $2 here
+main : beq $3 $2 here
        add $4 $2 $3
        add $4 $2 $3
        add $4 $2 $3
