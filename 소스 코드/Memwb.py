@@ -16,36 +16,29 @@ class Memwb:
         self.register_rd = "00000"
 
     def InitUI(self, app):
-        title = QLabel("MEM/WB", app)
-        title.move(1000, 600)
-        title.setFont(QFont('Arial', 20))
+        font = QFont('Arial', 9)
+        font.setBold(True)
 
-        self.code_label = QLabel("PC : nop", app)
-        self.code_label.move(1000, 650)
-
-        wb_label = QLabel("WB : ", app)
-        wb_label.move(1200, 600)
+        self.code_label = QLabel("nop", app)
+        self.code_label.setFont(QFont('Arial', 20))
+        self.code_label.move(1750, 0)
 
         self.wb_label = QLabel("00", app)
-        self.wb_label.move(1350, 600)
-
-        read_data_label = QLabel("Read Data : ", app)
-        read_data_label.move(1200, 620)
+        self.wb_label.move(1890, 220)
+        self.wb_label.setFont(font)
 
         self.read_data_label = QLabel("0xeeeeeeee", app)
-        self.read_data_label.move(1350, 620)
+        self.read_data_label.move(1850, 550)
+        self.read_data_label.setFont(font)
 
-        alu_label = QLabel("ALU : ", app)
-        alu_label.move(1200, 640)
 
         self.alu_label = QLabel("0xeeeeeeee", app)
-        self.alu_label.move(1350, 640) 
-
-        write_register_label = QLabel("Register rd : ", app)
-        write_register_label.move(1200, 660)
+        self.alu_label.move(1850, 670) 
+        self.alu_label.setFont(font)
 
         self.write_register_label = QLabel("00000", app)
-        self.write_register_label.move(1350, 660)
+        self.write_register_label.move(1840, 760)
+        self.write_register_label.setFont(font)
 
     def Reset(self):
         self.code = "nop"
@@ -98,7 +91,7 @@ class Memwb:
         self.LabelUpdate()
 
     def LabelUpdate(self):
-        self.code_label.setText("Code : " + self.code)
+        self.code_label.setText("" + self.code)
         self.code_label.setFixedWidth(500)
 
         self.wb_label.setText(str(self.reg_write) + str(self.memto_reg))

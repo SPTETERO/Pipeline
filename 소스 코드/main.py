@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QPixmap
 
 from Memory import Memory
 from Instruction_memory import Instruct_memory
@@ -30,6 +31,12 @@ class Application(QWidget):
         
         self.registers = Registers()
         self.registers.InitUI(self)
+
+        pipeline_img = QPixmap('Pipeline1.png')
+        pipeline = QLabel(self)
+        pipeline.setPixmap(pipeline_img)
+        pipeline.move(800, 30)
+
 
         self.ifid = Ifid()
         self.ifid.InitUI(self)
@@ -149,7 +156,7 @@ class Application(QWidget):
         self.memwb.RisingEdge(self.ifid, self.exmem, self.datamemory)
         self.exmem.RisingEdge(self.idex, self.memwb)
         ifid_write = self.HarzardDetectionUnit()
-        self.idex.RisingEdge(self.ifid, ifid_write, self.registers)
+        self.idex.RisingEdge(self.exmem, self.memwb, self.ifid, ifid_write, self.registers)
         self.ifid.RisingEdge(self.idex, ifid_write, self.instruction)
 
 if __name__ == '__main__':

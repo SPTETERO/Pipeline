@@ -10,24 +10,20 @@ class Ifid:
         self.code = "nop"
 
     def InitUI(self, app):
-        title = QLabel("IF/ID", app)
-        title.move(1000, 50)
-        title.setFont(QFont('Arial', 20))
+        self.codeLabel = QLabel("nop", app)
+        self.codeLabel.setFont(QFont('Arial', 20))
+        self.codeLabel.move(920, 0)
 
-        self.codeLabel = QLabel("Code : nop", app)
-        self.codeLabel.move(1000, 100)
-
-        pc_label = QLabel("PC :", app)
-        pc_label.move(1200, 50)
+        font = QFont('Arial', 9)
+        font.setBold(True)
 
         self.pc_label = QLabel("0x00000000", app)
-        self.pc_label.move(1350, 50)
-
-        instruction_label = QLabel("Instruction : ", app)
-        instruction_label.move(1200, 70)
+        self.pc_label.move(1040, 360)
+        self.pc_label.setFont(font)
 
         self.instruction_label = QLabel("00000000000000000000000000000000", app)
-        self.instruction_label.move(1350, 70)
+        self.instruction_label.move(880, 620)
+        self.instruction_label.setFont(font)
 
     def Reset(self):
         self.pc = int("400024", 16)
@@ -58,7 +54,7 @@ class Ifid:
         self.LabelUpdate()
 
     def LabelUpdate(self):
-        self.codeLabel.setText("Code : " + self.code)
+        self.codeLabel.setText("" + self.code)
         self.codeLabel.setFixedWidth(300)
 
         self.pc_label.setText(format(int(self.pc), "#x"))

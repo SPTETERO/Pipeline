@@ -22,55 +22,41 @@ class Exmem:
         self.register_rd = "00000"
 
     def InitUI(self, app):
-        #IDEX
-        title = QLabel("EX/MEM", app)
-        title.move(1000, 400)
-        title.setFont(QFont('Arial', 20))
+        
+        font = QFont('Arial', 9)
+        font.setBold(True)
 
-        self.code_label = QLabel("Code : nop", app)
-        self.code_label.move(1000, 450)
-
-        wb_label = QLabel("WB : ", app)
-        wb_label.move(1200, 400)
+        self.code_label = QLabel("nop", app)
+        self.code_label.setFont(QFont('Arial', 20))
+        self.code_label.move(1500, 0)
 
         self.wb_label = QLabel("00", app)
-        self.wb_label.move(1350, 400)
-
-        m_label = QLabel("M : ", app)
-        m_label.move(1200, 420)
+        self.wb_label.move(1660, 170)
+        self.wb_label.setFont(font)
 
         self.m_label = QLabel("000", app)
-        self.m_label.move(1350, 420)
-
-        pc_label = QLabel("PC : ", app)
-        pc_label.move(1200, 440)
+        self.m_label.move(1660, 220)
+        self.m_label.setFont(font)
 
         self.pc_label = QLabel("0xeeeeeeee", app)
-        self.pc_label.move(1350, 440)
-
-        zero_label = QLabel("Zero : ", app)
-        zero_label.move(1200, 460)
+        self.pc_label.move(1580, 380)
+        self.pc_label.setFont(font)
 
         self.zero_label = QLabel("0", app)
-        self.zero_label.move(1350, 460)
-
-        alu_label = QLabel("ALU : ", app)
-        alu_label.move(1200, 480)
+        self.zero_label.move(1640, 490)
+        self.zero_label.setFont(font)
 
         self.alu_label = QLabel("0xeeeeeeee", app)
-        self.alu_label.move(1350, 480)
-
-        mem_write_label = QLabel("Memory Write Data : ", app)
-        mem_write_label.move(1200, 500)
+        self.alu_label.move(1580, 540)
+        self.alu_label.setFont(font)
 
         self.mem_write_label = QLabel("0xeeeeeeee", app)
-        self.mem_write_label.move(1350, 500)
-
-        writeRegister = QLabel("Register rd : ", app)
-        writeRegister.move(1200, 520)
+        self.mem_write_label.move(1580, 630)
+        self.mem_write_label.setFont(font)
 
         self.register_rd_label = QLabel("00000", app)
-        self.register_rd_label.move(1350, 520)
+        self.register_rd_label.move(1600, 770)
+        self.register_rd_label.setFont(font)
 
     def Reset(self):
         self.code = "nop"
@@ -212,7 +198,7 @@ class Exmem:
         self.LabelUpdate()
 
     def LabelUpdate(self):
-        self.code_label.setText("Code : " + self.code)
+        self.code_label.setText("" + self.code)
         self.code_label.setFixedWidth(500)
 
         self.register_rd_label.setText(self.register_rd)
